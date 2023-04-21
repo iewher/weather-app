@@ -21,7 +21,7 @@ function GET_API(city) {
 
   return (
     <div>
-      Привет
+      
     </div>
   );
 }
