@@ -1,9 +1,9 @@
-import './App.css';
-import GET_API from './components/GET_API'
+import React from 'react'
+import Container from './components/container'
 
 function App() {
   return (
-    GET_API('Perm')
+    <Container />
   );
 }
 
