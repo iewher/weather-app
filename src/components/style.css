@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@500&family=Poppins:wght@300&family=Ysabeau:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Comfortaa';
 }
 
 body {
@@ -14,13 +18,15 @@ body {
     align-items: center;
     height: 900px;
     width: 600px;
-    margin-top: 40px
+    margin-top: 40px;
+    border-radius: 20px;
+    background: linear-gradient(purple, pink);
 }
 
 .container {
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    border: 4px solid black;
     border-radius: 20px;
 }
 
@@ -28,28 +34,76 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25%;
+    height: 20%;
     width: 100%;
+    border-radius: 20px 20px 0px 0px;
 }
 
 .header input {
+    height: 27%;
+    width: 87%;
+    border-radius: 20px;
+    border: 4px solid white;
+    color: black;
+    font-size: 18px;
+    text-indent: 10px;
+    transition: .5s;
+}
+
+.header input:hover {
     height: 30%;
     width: 90%;
-    border-radius: 20px;
-    border: 2px solid black;
-    color: black;
-    font-size: 20px;
-    text-indent: 10px;
+    transition: .5s;
+}
+
+.name-city, .celsius {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    transition: .5s;
+    padding: 5px;
+}
+
+.name-city:hover {
+    font-size: 60px;
+    transition: .5s
 }
 
 .content {
-    height: 50%;
+    height: 40%;
     width: 100%;
-    background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.react-icons {
+    position: static;
+    color: white;
+    width: 400px;
+    height: 400px;
+    transition: .5s;
+}
+
+.react-icons:hover {
+    width: 500px;
+    height: 500px;
+    transition: .5s;
 }
 
 .bottom {
-    height: 25%;
+    height: 20%;
     width: 100%;
-    background: green;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.list {
+    margin-bottom: 50px;
+    color: white;
+    font-size: 30px;
 }
