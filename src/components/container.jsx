@@ -4,6 +4,12 @@ import {WiDaySunny, WiCloud, WiWindy, WiHail, WiDayRainWind, WiDaySnow, WiDayHaz
 import './styles/style.css'
 
 export default function Container() {
+
+  /* 
+  Добавляю хук состояния для каждого элемента, который в дальнейшем вызываю
+  Для каждого элемента задаю переменную, а так же фукнцию, обновляющую ее состояние
+  */
+ 
   const [city, setCity] = useState('');
   const [temp, setTemp] = useState(null);
   const [feelsLike, setFeelsLike] = useState(null);
@@ -11,6 +17,11 @@ export default function Container() {
   const [weather, setWeather] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [weatherText, setWeatherText] = useState('');
+
+  /*
+  Добавляю хук отслеживания событий и обновления переменной
+  При выполнении условия, значение переменной обновляется
+  */
 
   useEffect(() => {
     if (weather === 'Clear') {
@@ -32,9 +43,19 @@ export default function Container() {
     }
   }, [weather]);
 
+  /*
+  Определяю функцию handleInputChange, которая будет вызываться при изменении значения в инпуте
+  Эта функция используется для обновления значений в режиме реального времени
+  */
+
   const handleInputChange = (event) => {
     setCity(event.target.value);
   }
+
+  /*
+  Определяю функцию, которая будет вызываться при нажатии клавиши на клавиатуре в инпуте
+  Переменные обновляют состояние
+  */
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
