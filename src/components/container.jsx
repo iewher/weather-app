@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import  GET_API  from './GET_API'
-import {WiDaySunny, WiCloud, WiWindy, WiHail, WiDayRainWind, WiDaySnow } from "react-icons/wi";
+import {WiDaySunny, WiCloud, WiWindy, WiHail, WiDayRainWind, WiDaySnow, WiDayHaze } from "react-icons/wi";
 import './styles/style.css'
 
 export default function Container() {
@@ -24,7 +24,9 @@ export default function Container() {
     } else if (weather === 'Rain') {
       setWeatherText('Дождь')
     } else if (weather === 'Snow') {
-      setWeatherText('Снег')
+      setWeatherText('Снег');
+    } else if (weather === 'Haze') {
+      setWeatherText('Мгла');
     } else {
       setWeatherText('');
     }
@@ -70,6 +72,7 @@ export default function Container() {
           {weatherText === 'Град' && <WiHail className={'react-icons'}/>}
           {weatherText === 'Дождь' && <WiDayRainWind className={'react-icons'}/>}
           {weatherText === 'Снег' && <WiDaySnow className={'react-icons'}/>}
+          {weatherText === 'Мгла' && <WiDayHaze className={'react-icons'}/>}
         </div>
         <div className='bottom'>
           <ul className='list'>
