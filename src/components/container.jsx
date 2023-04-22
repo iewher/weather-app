@@ -84,8 +84,8 @@ export default function Container() {
         <input type='text' placeholder='Введите город, чтобы узнать о нем информацию' value={city} onChange={(event) => setCity(event.target.value)} onKeyDown={handleKeyDown} />
         </div>
         <div className='name-city'>{selectedCity}</div>
-        <div className='celsius'>{temp} °C</div>
-        <div className='feels-like'>Ощущается как: {feelsLike} °C</div>
+        <div className='celsius'>{Math.round(temp)} °C</div>
+        <div className='feels-like'>Ощущается как: {Math.round(feelsLike)} °C</div>
         <div className='content'>
           {weatherText === 'Ясно' && <WiDaySunny className={'react-icons'}/>}
           {weatherText === 'Облачно' && <WiCloud className={'react-icons'}/>}
@@ -98,7 +98,7 @@ export default function Container() {
         <div className='bottom'>
           <ul className='list'>
             <li>Состояние: {weatherText}</li>
-            <li>Скорость ветра: {windSpeed} м/c</li>
+            <li>Скорость ветра: {Math.round(windSpeed)} м/c</li>
           </ul>
         </div>
       </div>
