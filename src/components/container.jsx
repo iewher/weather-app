@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import  GET_API  from './GET_API'
-import {WiDaySunny, WiCloud, WiDayFog, WiHail } from "react-icons/wi";
-import './style.css'
+import {WiDaySunny, WiCloud, WiWindy, WiHail, WiDayRainWind, WiDaySnow } from "react-icons/wi";
+import './styles/style.css'
 
 export default function Container() {
   const [city, setCity] = useState('');
   const [temp, setTemp] = useState(null);
+  const [feelsLike, setFeelsLike] = useState(null);
   const [windSpeed, setWindSpeed] = useState(null);
   const [weather, setWeather] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
@@ -16,10 +17,14 @@ export default function Container() {
       setWeatherText('Ясно');
     } else if (weather === 'Clouds') {
       setWeatherText('Облачно');
-    } else if (weather === 'Fog') {
+    } else if (weather === 'Mist') {
       setWeatherText('Туман');
     } else if (weather === 'Hail') {
       setWeatherText('Град');
+    } else if (weather === 'Rain') {
+      setWeatherText('Дождь')
+    } else if (weather === 'Snow') {
+      setWeatherText('Снег')
     } else {
       setWeatherText('');
     }
@@ -34,10 +39,12 @@ export default function Container() {
       setSelectedCity(city);
       setCity('');
       setTemp(null);
+      setFeelsLike(feelsLike);
       setWindSpeed(null);
       setWeather('');
-      GET_API(city, (temp, windSpeed, weather) => {
+      GET_API(city, (temp, feelsLike, windSpeed, weather) => {
         setTemp(temp);
+        setFeelsLike(feelsLike);
         setWindSpeed(windSpeed);
         setWeather(weather);
         console.log(temp);
@@ -54,9 +61,15 @@ export default function Container() {
         <input type='text' placeholder='Введите город, чтобы узнать о нем информацию' value={city} onChange={(event) => setCity(event.target.value)} onKeyDown={handleKeyDown} />
         </div>
         <div className='name-city'>{selectedCity}</div>
-        <div className='celsius'>{temp}°C</div>
+        <div className='celsius'>{temp} °C</div>
+        <div className='feels-like'>Ощущается как: {feelsLike} °C</div>
         <div className='content'>
-          <WiCloud className={'react-icons'}/>
+          {weatherText === 'Ясно' && <WiDaySunny className={'react-icons'}/>}
+          {weatherText === 'Облачно' && <WiCloud className={'react-icons'}/>}
+          {weatherText === 'Туман' && <WiWindy className={'react-icons'}/>}
+          {weatherText === 'Град' && <WiHail className={'react-icons'}/>}
+          {weatherText === 'Дождь' && <WiDayRainWind className={'react-icons'}/>}
+          {weatherText === 'Снег' && <WiDaySnow className={'react-icons'}/>}
         </div>
         <div className='bottom'>
           <ul className='list'>
