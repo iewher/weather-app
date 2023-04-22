@@ -55,6 +55,7 @@ body {
     height: 35%;
     width: 55%;
     transition: .5s;
+    font-size: 25px;
 }
 
 .name-city, .celsius {
