@@ -16,9 +16,10 @@ function GET_API(city, callback) {
     if (response) {
       console.log(response.data)
       const temp = response.data.main.temp;
+      const feelsLike = response.data.main.feels_like
       const windSpeed = response.data.wind.speed;
       const weather = response.data.weather[0].main;
-      callback(temp, windSpeed, weather);
+      callback(temp, feelsLike, windSpeed, weather);
     } else {
       console.log('Response is undefined');
     }
