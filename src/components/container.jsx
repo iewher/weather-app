@@ -17,6 +17,7 @@ export default function Container() {
   const [weather, setWeather] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [weatherText, setWeatherText] = useState('');
+  const [showContent, setShowContent] = useState(false);
 
   /*
   Добавляю хук отслеживания событий и обновления переменной
@@ -65,6 +66,7 @@ export default function Container() {
       setFeelsLike(feelsLike);
       setWindSpeed(null);
       setWeather('');
+      setShowContent(true);
       GET_API(city, (temp, feelsLike, windSpeed, weather) => {
         setTemp(temp);
         setFeelsLike(feelsLike);
@@ -83,24 +85,28 @@ export default function Container() {
         <div className='header'>
         <input type='text' placeholder='Введите город, чтобы узнать о нем информацию' value={city} onChange={(event) => setCity(event.target.value)} onKeyDown={handleKeyDown} />
         </div>
-        <div className='name-city'>{selectedCity}</div>
-        <div className='celsius'>{Math.round(temp)} °C</div>
-        <div className='feels-like'>Ощущается как: {Math.round(feelsLike)} °C</div>
-        <div className='content'>
-          {weatherText === 'Ясно' && <WiDaySunny className={'react-icons'}/>}
-          {weatherText === 'Облачно' && <WiCloud className={'react-icons'}/>}
-          {weatherText === 'Туман' && <WiWindy className={'react-icons'}/>}
-          {weatherText === 'Град' && <WiHail className={'react-icons'}/>}
-          {weatherText === 'Дождь' && <WiDayRainWind className={'react-icons'}/>}
-          {weatherText === 'Снег' && <WiDaySnow className={'react-icons'}/>}
-          {weatherText === 'Мгла' && <WiDayHaze className={'react-icons'}/>}
-        </div>
-        <div className='bottom'>
-          <ul className='list'>
-            <li>Состояние: {weatherText}</li>
-            <li>Скорость ветра: {Math.round(windSpeed)} м/c</li>
-          </ul>
-        </div>
+        {showContent && (
+          <>
+          <div className='name-city'>{selectedCity}</div>
+          <div className='celsius'>{Math.round(temp)} °C</div>
+          <div className='feels-like'>Ощущается как: {Math.round(feelsLike)} °C</div>
+          <div className='content'>
+            {weatherText === 'Ясно' && <WiDaySunny className={'react-icons'}/>}
+            {weatherText === 'Облачно' && <WiCloud className={'react-icons'}/>}
+            {weatherText === 'Туман' && <WiWindy className={'react-icons'}/>}
+            {weatherText === 'Град' && <WiHail className={'react-icons'}/>}
+            {weatherText === 'Дождь' && <WiDayRainWind className={'react-icons'}/>}
+            {weatherText === 'Снег' && <WiDaySnow className={'react-icons'}/>}
+            {weatherText === 'Мгла' && <WiDayHaze className={'react-icons'}/>}
+          </div>
+          <div className='bottom'>
+            <ul className='list'>
+              <li>Состояние: {weatherText}</li>
+              <li>Скорость ветра: {Math.round(windSpeed)} м/c</li>
+            </ul>
+          </div>
+          </>
+        )}
       </div>
     </div>
   )
