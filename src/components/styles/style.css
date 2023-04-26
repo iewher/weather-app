@@ -24,6 +24,10 @@ body {
     background: linear-gradient(purple, pink);
 }
 
+.dark {
+    background: linear-gradient(black, gray);
+}
+
 .container {
     width: 100%;
     height: 100%;
@@ -45,7 +49,7 @@ body {
     border-radius: 20px;
     border: 4px solid white;
     color: black;
-    font-size: 20px;
+    font-size: calc(.5rem + .8vw);
     text-indent: 10px;
     transition: .5s;
     outline: none;
@@ -55,7 +59,27 @@ body {
     height: 35%;
     width: 55%;
     transition: .5s;
-    font-size: 25px;
+    font-size: calc(.5rem + 1vw);
+}
+
+.header button {
+    margin-left: 15px;
+    height: 30%;
+    width: 12%;
+    color: black;
+    border-radius: 20px;
+    outline: none;
+    border: 4px solid white;
+    background: white;
+    transition: .5s;
+    font-size: calc(.5rem + .8vw);
+}
+
+.header button:hover {
+    height: 35%;
+    width: 17%;
+    transition: .5s;
+    font-size: calc(.5rem + 1vw);
 }
 
 .name-city, .celsius {
