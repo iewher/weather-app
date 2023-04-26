@@ -18,6 +18,7 @@ export default function Container() {
   const [selectedCity, setSelectedCity] = useState('');
   const [weatherText, setWeatherText] = useState('');
   const [showContent, setShowContent] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   /*
   Добавляю хук отслеживания событий и обновления переменной
@@ -45,16 +46,7 @@ export default function Container() {
   }, [weather]);
 
   /*
-  Определяю функцию handleInputChange, которая будет вызываться при изменении значения в инпуте
-  Эта функция используется для обновления значений в режиме реального времени
-  */
-
-  const handleInputChange = (event) => {
-    setCity(event.target.value);
-  }
-
-  /*
-  Определяю функцию, которая будет вызываться при нажатии клавиши на клавиатуре в инпуте
+  Определяю функцию, которая будет вызываться при нажатии клавиши Enter на клавиатуре в инпуте
   Переменные обновляют состояние
   */
 
@@ -79,11 +71,20 @@ export default function Container() {
     }
   }
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  }
+
+  const containerClassName = `container ${isDarkMode ? 'dark' : 'light'}`;
+
   return (
-    <div className='main'>
-      <div className='container'>
+    <div className={`main ${isDarkMode ? 'dark' : 'light'}`}>
+      <div className={containerClassName}>
         <div className='header'>
         <input type='text' placeholder='Введите город, чтобы узнать о нем информацию' value={city} onChange={(event) => setCity(event.target.value)} onKeyDown={handleKeyDown} />
+        <button onClick={toggleDarkMode}>
+          {isDarkMode ? 'Светлая тема': 'Темная тема'}
+        </button>
         </div>
         {showContent && (
           <>
