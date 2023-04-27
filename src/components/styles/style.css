@@ -86,7 +86,16 @@ body {
     display: flex;
     justify-content: center;
     color: white;
-    font-size: 50px;
+    font-size: calc(2.5rem + 1vw);
+    transition: .5s;
+    padding: 5px;
+}
+
+.temp_min, .temp_max {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: calc(.5rem + 1vw);
     transition: .5s;
     padding: 5px;
 }
@@ -95,13 +104,13 @@ body {
     display: flex;
     justify-content: center;
     color: white;
-    font-size: 25px;
+    font-size: calc(.4rem + 1vw);
     transition: .5s;
     padding: 5px;
 }
 
 .name-city:hover {
-    font-size: 60px;
+    font-size: calc(4rem + 1vw);
     transition: .5s
 }
 
@@ -116,14 +125,14 @@ body {
 .react-icons {
     position: static;
     color: white;
-    width: 300px;
-    height: 300px;
+    width: 25rem;
+    height: 25rem;
     transition: .5s;
 }
 
 .react-icons:hover {
-    width: 350px;
-    height: 350px;
+    width: 30rem;
+    height: 30rem;
     transition: .5s;
 }
 
@@ -138,7 +147,7 @@ body {
 }
 
 .list {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
     color: white;
-    font-size: 30px;
+    font-size: calc(1rem + 1vw);
 }
