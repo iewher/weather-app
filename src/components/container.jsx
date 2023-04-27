@@ -12,6 +12,8 @@ export default function Container() {
  
   const [city, setCity] = useState('');
   const [temp, setTemp] = useState(null);
+  const [temp_min, setTemp_min] = useState(null);
+  const [temp_max, setTemp_max] = useState(null);
   const [feelsLike, setFeelsLike] = useState(null);
   const [windSpeed, setWindSpeed] = useState(null);
   const [weather, setWeather] = useState('');
@@ -19,6 +21,7 @@ export default function Container() {
   const [weatherText, setWeatherText] = useState('');
   const [showContent, setShowContent] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [error, setError] = useState(null);
 
   /*
   Добавляю хук отслеживания событий и обновления переменной
@@ -55,18 +58,29 @@ export default function Container() {
       setSelectedCity(city);
       setCity('');
       setTemp(null);
+      setTemp_min(null);
+      setTemp_max(null);
       setFeelsLike(feelsLike);
       setWindSpeed(null);
       setWeather('');
       setShowContent(true);
-      GET_API(city, (temp, feelsLike, windSpeed, weather) => {
+      GET_API(city, (temp, temp_min, temp_max, feelsLike, windSpeed, weather) => {
         setTemp(temp);
+        setTemp_min(temp_min);
+        setTemp_max(temp_max);
         setFeelsLike(feelsLike);
         setWindSpeed(windSpeed);
         setWeather(weather);
+
+  /*
+  Проверяю правильность поступления данных
+  */      
+  
         console.log(temp);
         console.log(windSpeed);
         console.log(weather);
+        console.log(temp_min);
+        console.log(temp_max);
       });
     }
   }
@@ -90,6 +104,8 @@ export default function Container() {
           <>
           <div className='name-city'>{selectedCity}</div>
           <div className='celsius'>{Math.round(temp)} °C</div>
+          <div className='temp_min'>Минимально: {Math.round(temp_min)} °C</div>
+          <div className='temp_max'>Максимально: {Math.round(temp_max)} °C</div>
           <div className='feels-like'>Ощущается как: {Math.round(feelsLike)} °C</div>
           <div className='content'>
             {weatherText === 'Ясно' && <WiDaySunny className={'react-icons'}/>}

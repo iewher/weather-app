@@ -39,10 +39,12 @@ function GET_API(city, callback) {
 */
 
       const temp = response.data.main.temp;
+      const temp_min = response.data.main.temp_min;
+      const temp_max = response.data.main.temp_max;
       const feelsLike = response.data.main.feels_like
       const windSpeed = response.data.wind.speed;
       const weather = response.data.weather[0].main;
-      callback(temp, feelsLike, windSpeed, weather);
+      callback(temp, temp_min, temp_max, feelsLike, windSpeed, weather);
     } else {
       console.log('Response is undefined');
     }
