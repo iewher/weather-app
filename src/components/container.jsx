@@ -20,8 +20,8 @@ export default function Container() {
   const [selectedCity, setSelectedCity] = useState('');
   const [weatherText, setWeatherText] = useState('');
   const [showContent, setShowContent] = useState(false);
+  const [homeScreen, setHomeScreen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [error, setError] = useState(null);
 
   /*
   Добавляю хук отслеживания событий и обновления переменной
@@ -64,6 +64,7 @@ export default function Container() {
       setWindSpeed(null);
       setWeather('');
       setShowContent(true);
+      setHomeScreen(false);
       GET_API(city, (temp, temp_min, temp_max, feelsLike, windSpeed, weather) => {
         setTemp(temp);
         setTemp_min(temp_min);
@@ -100,6 +101,11 @@ export default function Container() {
           {isDarkMode ? 'Светлая тема': 'Темная тема'}
         </button>
         </div>
+        {homeScreen && (
+          <>
+          <div className='home-screen'>Добро пожаловать, введите любой город на карте мира и я покажу о нем информацию</div>
+          </>
+        )}
         {showContent && (
           <>
           <div className='name-city'>{selectedCity}</div>
