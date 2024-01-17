@@ -1,4 +1,28 @@
-# Quick reference
+# Проект @DEPRECATED
+
+# Краткая справка
+
+Weather-app - приложение, показывающая актуальные погодные данные, такие как:
+
+1. Градусы
+2. Ветер
+3. Влажность
+4. Состояние (например Снег)
+
+## Использованные UI
+
+1. Ant Design
+
+## Хранение данных
+
+В папке /src создать файл data.json, поместить туда API_KEY и API_URL в формате:
+
+```json
+{
+  "API_KEY": "KEY_here",
+  "API_URL": "URL_here"
+}
+```
 
 <image src="public/forgithub.jpg">
 
