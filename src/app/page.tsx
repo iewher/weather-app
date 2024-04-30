@@ -58,7 +58,7 @@ export default function Page() {
 
   return (
     <div className={styles.Main}>
-      <form className="header" onSubmit={getData}>
+      <form className={styles.Header} onSubmit={getData}>
         <Input
           typeof="text"
           placeholder="Введите город, чтобы узнать о нем информацию"
@@ -69,7 +69,7 @@ export default function Page() {
       </form>
       {defaultScreen && (
         <>
-          <div className="home-screen">
+          <div className={styles.Default}>
             Добро пожаловать, введите любой город на карте мира и я покажу о нем
             информацию
           </div>
@@ -77,42 +77,42 @@ export default function Page() {
       )}
       {!defaultScreen && data && (
         <>
-          <div className="name-city">{data.name}</div>
-          <div className="celsius">{Math.round(data.main.temp)} °C</div>
-          <div className="temp_min">
+          <div className={styles.CityName}>{data.name}</div>
+          <div className={styles.Celsius}>{Math.round(data.main.temp)} °C</div>
+          <div className={styles.MinTemp}>
             Минимально: {Math.round(data?.main.temp_min)} °C
           </div>
-          <div className="temp_max">
+          <div className={styles.MaxTemp}>
             Максимально: {Math.round(data.main.temp_max)} °C
           </div>
-          <div className="feels-like">
+          <div className={styles.FeelsLike}>
             Ощущается как: {Math.round(data.main.feels_like)} °C
           </div>
-          <div className="content">
+          <div className={styles.Content}>
             {data.weather[0].main === "Clear" && (
-              <WiDaySunny className={"react-icons"} />
+              <WiDaySunny className={styles.Icon} />
             )}
             {data.weather[0].main === "Cloudy" && (
-              <WiCloud className={"react-icons"} />
+              <WiCloud className={styles.Icon} />
             )}
             {data.weather[0].main === "Fog" && (
-              <WiWindy className={"react-icons"} />
+              <WiWindy className={styles.Icon} />
             )}
             {data.weather[0].main === "Hail" && (
-              <WiHail className={"react-icons"} />
+              <WiHail className={styles.Icon} />
             )}
             {data.weather[0].main === "Rain" && (
-              <WiDayRainWind className={"react-icons"} />
+              <WiDayRainWind className={styles.Icon} />
             )}
             {data.weather[0].main === "Snow" && (
-              <WiDaySnow className={"react-icons"} />
+              <WiDaySnow className={styles.Icon} />
             )}
             {data.weather[0].main === "Haze" && (
-              <WiDayHaze className={"react-icons"} />
+              <WiDayHaze className={styles.Icon} />
             )}
           </div>
-          <div className="bottom">
-            <ul className="list">
+          <div className={styles.Bottom}>
+            <ul className={styles.List}>
               <li>Состояние: {data.weather[0].description}</li>
               <li>Скорость ветра: {Math.round(data.wind.speed)} м/c</li>
             </ul>
