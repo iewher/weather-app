@@ -1,3 +1,16 @@
+![Logo](image.png)
+
+# Weather app
+
+Weather-app - приложение, показывающее актуальные погодные данные, такие как:
+
+1. Градусы
+2. Ветер
+3. Влажность
+4. Состояние (например Снег)
+
+![Preview](public/forgithub.jpg)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

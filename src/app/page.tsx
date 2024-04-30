@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   WiDaySunny,
   WiCloud,
@@ -10,11 +10,10 @@ import {
   WiDaySnow,
   WiDayHaze,
 } from "react-icons/wi";
-import { Input } from "antd";
-import json from "../../data.json";
+import Header from "@/components/header";
 import styles from "./page.module.scss";
 
-interface DataProps {
+export interface DataProps {
   name: string;
   main: {
     temp: number;
@@ -36,37 +35,24 @@ export default function Page() {
   const [defaultScreen, setDefaultScreen] = useState(true);
   const [data, setData] = useState<DataProps>();
 
-  const getData = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      fetch(
-        json.API_URL +
-          `?q=${city}` +
-          `&appid=${json.API_KEY}` +
-          `&units=metric` +
-          `&lang=ru`,
-      )
-        .then((res) => res.json())
-        .then((data) => setData(data));
-
-      setDefaultScreen(false);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  const [switchTheme, setSwitchTheme] = useState(false);
 
   return (
-    <div className={styles.Main}>
-      <form className={styles.Header} onSubmit={getData}>
-        <Input
-          typeof="text"
-          placeholder="Введите город, чтобы узнать о нем информацию"
-          value={city}
-          onChange={(event) => setCity(event.target.value)}
-        />
-        <button type="submit">Поиск</button>
-      </form>
+    <div
+      className={styles.Main}
+      style={{
+        background: switchTheme
+          ? "background: linear-gradient(black, gray)"
+          : "linear-gradient(purple, pink)",
+      }}
+    >
+      <Header
+        city={city}
+        setCity={setCity}
+        setData={setData}
+        setDefaultScreen={setDefaultScreen}
+        setSwitchTheme={setSwitchTheme}
+      />
       {defaultScreen && (
         <>
           <div className={styles.Default}>
@@ -92,7 +78,7 @@ export default function Page() {
             {data.weather[0].main === "Clear" && (
               <WiDaySunny className={styles.Icon} />
             )}
-            {data.weather[0].main === "Cloudy" && (
+            {data.weather[0].main === "Clouds" && (
               <WiCloud className={styles.Icon} />
             )}
             {data.weather[0].main === "Fog" && (
