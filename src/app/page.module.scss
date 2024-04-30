@@ -1,30 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Poppins:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Inter:wght@500&family=Poppins:wght@300&family=Ysabeau:wght@300&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Comfortaa";
-}
-body {
-  display: flex;
-  justify-content: center;
-}
-.main {
+.Main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(purple, pink);
 }
-.dark {
-  background: linear-gradient(black, gray);
-}
-.home-screen {
+
+.Default {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,18 +19,21 @@ body {
   font-size: calc(1rem);
   padding-left: 15px;
 }
+
 .container {
   width: 100%;
   height: 100%;
   border: 4px solid black;
 }
-.header {
+.Header {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20%;
   width: 100%;
+  gap: 20px;
   border-radius: 20px 20px 0px 0px;
+
   input {
     height: 30%;
     width: 50%;
@@ -53,36 +42,23 @@ body {
     color: black;
     font-size: 20px;
     text-indent: 10px;
-    transition: 0.5s;
     outline: none;
-    &:hover {
-      height: 35%;
-      width: 55%;
-      transition: 0.5s;
-      font-size: 20px;
-    }
   }
+
   button {
-    margin-left: 15px;
-    height: 30%;
-    width: 12%;
+    cursor: pointer;
     color: black;
     border-radius: 20px;
     outline: none;
     border: 4px solid white;
     background: white;
-    transition: 0.5s;
     font-size: 20px;
-    &:hover {
-      height: 35%;
-      width: 17%;
-      transition: 0.5s;
-      font-size: 20px;
-    }
+    padding: 8px 16px;
   }
 }
-.name-city,
-.celsius {
+
+.CityName,
+.Celsius {
   display: flex;
   justify-content: center;
   color: white;
@@ -90,8 +66,9 @@ body {
   transition: 0.5s;
   padding: 5px;
 }
-.temp_min,
-.temp_max {
+
+.MinTemp,
+.MaxTemp {
   display: flex;
   justify-content: center;
   color: white;
@@ -99,7 +76,8 @@ body {
   transition: 0.5s;
   padding: 5px;
 }
-.feels-like {
+
+.FeelsLike {
   display: flex;
   justify-content: center;
   color: white;
@@ -107,30 +85,35 @@ body {
   transition: 0.5s;
   padding: 5px;
 }
+
 .name-city:hover {
   font-size: calc(4rem);
   transition: 0.5s;
 }
-.content {
+
+.Content {
   height: 40%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.react-icons {
+
+.ReactIcons {
   position: static;
   color: white;
   width: 25rem;
   height: 25rem;
   transition: 0.5s;
+
   &:hover {
     width: 30rem;
     height: 30rem;
     transition: 0.5s;
   }
 }
-.bottom {
+
+.Bottom {
   height: 20%;
   width: 100%;
   border-radius: 0px 0px 20px 20px;
@@ -139,7 +122,8 @@ body {
   align-items: center;
   font-size: 20px;
 }
-.list {
+
+.List {
   margin-bottom: 100px;
   color: white;
   font-size: 25px;
