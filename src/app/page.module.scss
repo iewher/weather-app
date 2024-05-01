@@ -1,95 +1,45 @@
-.Main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.Default {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 30px;
-  color: white;
-  margin-top: 50px;
-  font-size: calc(1rem);
-  padding-left: 15px;
-}
-
-.CityName,
-.Celsius {
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-size: 55px;
-  transition: 0.5s;
-  padding: 5px;
-}
-
-.MinTemp,
-.MaxTemp {
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-size: 30px;
-  transition: 0.5s;
-  padding: 5px;
-}
-
-.FeelsLike {
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-size: 30px;
-  transition: 0.5s;
-  padding: 5px;
-}
-
-.name-city:hover {
-  font-size: calc(4rem);
-  transition: 0.5s;
-}
-
 .Content {
-  height: 40%;
-  width: 100%;
+  padding: 32px 64px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.Icon {
-  position: static;
+.Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 425px;
+  width: 817px;
+  border-radius: 32px;
+  background: linear-gradient(0.4turn, #ad36cb, #333333);
+  font-size: 30px;
   color: white;
-  width: 25rem;
-  height: 25rem;
-  transition: 0.5s;
+  padding: 28px 35px;
 
-  &:hover {
-    width: 30rem;
-    height: 30rem;
-    transition: 0.5s;
+  .Info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
-}
 
-.Bottom {
-  height: 20%;
-  width: 100%;
-  border-radius: 0px 0px 20px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
+  .Temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-size: 70px;
+  }
 
-.List {
-  margin-bottom: 100px;
-  color: white;
-  font-size: 25px;
+  .Statuses {
+    display: flex;
+    justify-content: space-between;
+
+    .Status {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
 }

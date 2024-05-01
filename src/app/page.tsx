@@ -1,20 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import {
-  WiDaySunny,
-  WiCloud,
-  WiWindy,
-  WiHail,
-  WiDayRainWind,
-  WiDaySnow,
-  WiDayHaze,
-} from "react-icons/wi";
+import temp from "../../public/temp.png";
 import Header from "@/components/header";
+import Degree from "@/components/degree";
+import Search from "@/components/search";
 import styles from "./page.module.scss";
+import Image from "next/image";
 
 export interface DataProps {
   name: string;
+  visibility: number;
   main: {
     temp: number;
     temp_min: number;
@@ -27,83 +23,58 @@ export interface DataProps {
   }[];
   wind: {
     speed: number;
+    gust: number;
   };
 }
 
 export default function Page() {
   const [city, setCity] = useState("");
-  const [defaultScreen, setDefaultScreen] = useState(true);
   const [data, setData] = useState<DataProps>();
-
-  const [switchTheme, setSwitchTheme] = useState(false);
+  const [degree, setDegree] = useState("°C" || "°F");
 
   return (
-    <div
-      className={styles.Main}
-      style={{
-        background: switchTheme
-          ? "background: linear-gradient(black, gray)"
-          : "linear-gradient(purple, pink)",
-      }}
-    >
-      <Header
-        city={city}
-        setCity={setCity}
-        setData={setData}
-        setDefaultScreen={setDefaultScreen}
-        setSwitchTheme={setSwitchTheme}
-      />
-      {defaultScreen && (
-        <>
-          <div className={styles.Default}>
-            Добро пожаловать, введите любой город на карте мира и я покажу о нем
-            информацию
+    <div>
+      <Header />
+      <Degree degree={degree} setDegree={setDegree} />
+      <Search city={city} setCity={setCity} setData={setData} />
+      {data && (
+        <div className={styles.Content}>
+          <div className={styles.Card}>
+            <div className={styles.Info}>
+              <p>{data.name}</p>
+              <p>{new Date().toLocaleString()}</p>
+            </div>
+            <div className={styles.Temp}>
+              <Image src={temp} alt="temp" width={20} height={60} />
+              <p>
+                {Math.round(
+                  degree === "°C" ? data.main.temp : data.main.temp * 1.8 + 32,
+                )}
+                {degree}
+              </p>
+            </div>
+            <div className={styles.Statuses}>
+              {data.visibility && (
+                <div className={styles.Status}>
+                  <p>Видимость</p>
+                  <p>{data.visibility / 100} %</p>
+                </div>
+              )}
+              {data.wind.gust && (
+                <div className={styles.Status}>
+                  <p>Туман</p>
+                  <p>{data.wind.gust} %</p>
+                </div>
+              )}
+              {data.wind.speed && (
+                <div className={styles.Status}>
+                  <p>Ветер</p>
+                  <p>{data.wind.speed} m/s</p>
+                </div>
+              )}
+            </div>
           </div>
-        </>
-      )}
-      {!defaultScreen && data && (
-        <>
-          <div className={styles.CityName}>{data.name}</div>
-          <div className={styles.Celsius}>{Math.round(data.main.temp)} °C</div>
-          <div className={styles.MinTemp}>
-            Минимально: {Math.round(data?.main.temp_min)} °C
-          </div>
-          <div className={styles.MaxTemp}>
-            Максимально: {Math.round(data.main.temp_max)} °C
-          </div>
-          <div className={styles.FeelsLike}>
-            Ощущается как: {Math.round(data.main.feels_like)} °C
-          </div>
-          <div className={styles.Content}>
-            {data.weather[0].main === "Clear" && (
-              <WiDaySunny className={styles.Icon} />
-            )}
-            {data.weather[0].main === "Clouds" && (
-              <WiCloud className={styles.Icon} />
-            )}
-            {data.weather[0].main === "Fog" && (
-              <WiWindy className={styles.Icon} />
-            )}
-            {data.weather[0].main === "Hail" && (
-              <WiHail className={styles.Icon} />
-            )}
-            {data.weather[0].main === "Rain" && (
-              <WiDayRainWind className={styles.Icon} />
-            )}
-            {data.weather[0].main === "Snow" && (
-              <WiDaySnow className={styles.Icon} />
-            )}
-            {data.weather[0].main === "Haze" && (
-              <WiDayHaze className={styles.Icon} />
-            )}
-          </div>
-          <div className={styles.Bottom}>
-            <ul className={styles.List}>
-              <li>Состояние: {data.weather[0].description}</li>
-              <li>Скорость ветра: {Math.round(data.wind.speed)} м/c</li>
-            </ul>
-          </div>
-        </>
+        </div>
       )}
     </div>
   );

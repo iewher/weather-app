@@ -9,7 +9,22 @@ Weather-app - приложение, показывающее актуальны�
 3. Влажность
 4. Состояние (например Снег)
 
-![Preview](public/forgithub.jpg)
+## Перед запуском
+
+1. Создать файл data.json в корне проекта, прописать в нем:
+
+```json
+{
+  "API_KEY": "API_KEY",
+  "API_URL": "https://api.openweathermap.org/data/2.5/weather"
+}
+```
+
+2. Скопировать API_KEY [отсюда](https://home.openweathermap.org/api_keys)
+
+## Предпросмотр
+
+![Preview](public/forgithub.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
