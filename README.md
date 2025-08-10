@@ -16,7 +16,15 @@ Weather-app - приложение, показывающее актуальны�
 
 ## Перед запуском
 
-1. Заменить API_KEY в .env файле.
+1. Создать .env в корне проекта
+
+```bash
+# Содержимое .env.
+NEXT_PUBLIC_API_KEY=example # Замените на свой API KEY из https://home.openweathermap.org/api_keys
+NEXT_PUBLIC_API_URL=https://api.openweathermap.org/data/2.5/weather
+```
+
+> Заменить API_KEY в .env файле.
 
 ## Предпросмотр
 
