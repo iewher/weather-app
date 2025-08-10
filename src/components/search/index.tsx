@@ -1,5 +1,4 @@
 import { DataProps } from "@/app/page";
-import json from "../../../data.json";
 import styles from "./index.module.scss";
 
 interface SearchProps {
@@ -14,9 +13,9 @@ export default function Search({ city, setCity, setData }: SearchProps) {
 
     try {
       fetch(
-        json.API_URL +
+        process.env.NEXT_PUBLIC_API_URL +
           `?q=${city}` +
-          `&appid=${json.API_KEY}` +
+          `&appid=${process.env.NEXT_PUBLIC_API_KEY}` +
           `&units=metric` +
           `&lang=ru`,
       )
